@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     fontFamily: {
       mono: ['Monaco', 'monospace'], // monospace is the fallback
-      con: ['Consolas', 'monospace'],
+      con: ['Helvetica', 'monospace'],
     },
     colors: {
       // ...
@@ -27,8 +27,10 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        '12xl': '9.5rem',
-        '15xl': '12rem'
+        '12xl': ['10rem', { lineHeight: '1' }], // You can adjust lineHeight as needed
+        '15xl': ['12rem', { lineHeight: '1' }],
+        '18xl': ['13rem', { lineHeight: '1' }],
+        // Adding responsive sizes
       },
       colors: {
         background: "var(--background)",
