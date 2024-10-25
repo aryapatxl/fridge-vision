@@ -26,6 +26,10 @@ module.exports = {
       }
     },
     extend: {
+      fontSize: {
+        '12xl': '9.5rem',
+        '15xl': '12rem'
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

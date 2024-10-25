@@ -9,13 +9,11 @@ function ScrollingInstructions() {
     slidesToShow: 3,
     swipeToSlide: true,
     draggable: true,
-    
-    // responsiveness adjusts according to screen size
     responsive: [
       {
-        breakpoint: 1024, 
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 2, 
+          slidesToShow: 2,
         },
       },
       {
@@ -33,50 +31,47 @@ function ScrollingInstructions() {
         <Slider {...settings}>
           {/* 1st Instruction */}
           <div className="card-size">
-            <div className="flex items-center bg-blue dark:bg-blue-dark" >
-              <h1 className="text-9xl font-mono text-white dark:text-white-dark mr-7">1</h1> {/* mr = right margin */}
+            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">1</h1>
               <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-5xl mb-2">Take a</p> {/* mb = margin bottom */}
-                <p className="font-con font-bold text-white  dark:text-white-dark text-5xl">Picture.</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Take a</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">Picture.</p>
               </div>
-          </div>
+            </div>
           </div>
 
-          {/* 2st Instruction */}
+          {/* 2nd Instruction */}
           <div className="card-size">
-            <div className="flex items-center bg-blue dark:bg-blue-dark" >
-              <h1 className="text-9xl font-mono text-white dark:text-white-dark mr-7">2</h1> {/* mr = right margin */}
+            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">2</h1>
               <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-5xl mb-2">Upload</p> {/* mb = margin bottom */}
-                <p className="font-con font-bold text-white  dark:text-white-dark text-5xl">It.</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Upload</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">It.</p>
               </div>
-          </div>
+            </div>
           </div>
 
-           {/* 3rd Instruction */}
-           <div className="card-size">
-            <div className="flex items-center bg-blue dark:bg-blue-dark" >
-              <h1 className="text-9xl font-mono text-white dark:text-white-dark mr-7">3</h1> {/* mr = right margin */}
+          {/* 3rd Instruction */}
+          <div className="card-size">
+            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">3</h1>
               <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-5xl mb-2">Press</p> {/* mb = margin bottom */}
-                <p className="font-con font-bold text-white  dark:text-white-dark text-5xl">Detect.</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Press</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">Detect.</p>
               </div>
+            </div>
           </div>
-          </div>
-        
+
           {/* 4th Instruction */}
           <div className="card-size">
-            <div className="flex items-center bg-blue dark:bg-blue-dark" >
-              <h1 className="text-9xl font-mono text-white dark:text-white-dark mr-7">4</h1> {/* mr = right margin */}
+            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">4</h1>
               <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-5xl mb-2">Review</p> {/* mb = margin bottom */}
-                <p className="font-con font-bold text-white  dark:text-white-dark text-5xl">the Results.</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Review</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">Results.</p>
               </div>
+            </div>
           </div>
-          </div>
-
-
-          
         </Slider>
       </div>
     </>

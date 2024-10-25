@@ -20,9 +20,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.card-size {
-  width: 16rem; /* w-64 equivalent */
-  height: 18rem; /* h-40 equivalent */
-
+.slider-container {
+  position: relative; /* Ensure positioning context for absolute elements */
 }
-
