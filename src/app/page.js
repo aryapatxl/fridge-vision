@@ -1,9 +1,11 @@
 'use client';
 import React from "react";
-import ImageUpload from "./components/ImageUpload"; // Adjust the relative path
+import { useState } from "react";
+import ImageUpload from "./components/ImageUpload-Print"; // Adjust the relative path
 import ScrollingInstructions from "./components/ScrollingInstructions";
 
 const HomePage = () => {
+  const [output, setOutput] = useState("");
   return (
     <div className="overflow-x-hidden"> {/* Removes horizontal overflow for clean UI */}
       {/* "Logo" */}
@@ -33,8 +35,17 @@ const HomePage = () => {
 
       {/* Photo Uploader Section */}
       <div className="bg-white dark:bg-white-dark h-[70vh] w-full">
-        <ImageUpload />
+      <ImageUpload output={output} setOutput={setOutput} />
       </div>
+
+ 
+      {output && (
+        <div className="mt-4">
+          <h2>Detection Result:</h2>
+          <p>{output}</p>
+        </div>
+      )}
+
     </div>
   );
 };

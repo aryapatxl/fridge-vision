@@ -3,21 +3,17 @@ import Anthropic from "@anthropic-ai/sdk";
 
 export async function POST(req) {
   try {
-    // read API Key from environment variables
-    const apiKey = process.env.ANTHROPIC_API_KEY; // Use server-side variable, not NEXT_PUBLIC
-    console.log(apiKey);
+    const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: "API key is missing" }, { status: 500 });
+      return NextResponse.json({ error: "Error: API key is missing." }, { status: 500 });
     }
 
-    // parse the incoming request for image data
     const formData = await req.formData();
-    const imageFile = formData.get('image'); // Get the image file
+    const imageFile = formData.get('image');
     if (!imageFile || !imageFile.size) {
-      return NextResponse.json({ error: "No image uploaded" }, { status: 400 });
+      return NextResponse.json({ error: "Error: No image uploaded." }, { status: 400 });
     }
 
-    // convert the image file to a buffer (temporary storage)
     const imageBuffer = await imageFile.arrayBuffer();
     const base64Image = Buffer.from(imageBuffer).toString('base64');
     const anthropic = new Anthropic({ apiKey });
@@ -26,14 +22,14 @@ export async function POST(req) {
       model: "claude-3-5-sonnet-20241022",
       max_tokens: 1000,
       temperature: 0,
-      system: "You are a fridge analyzer, analyze this picture of a fridge and output the ingrediants in the fridge and their quantities in this format: key (item) : value (quantity). If the image is blurry, unreadable, or not a fridge, send an error message.",
+      system: "You are a fridge analyzer that analyzes images of refrigerators and outputs a list of all the food items, including condiments, liquids, vegetables, fruits, etc., and their quantities in the fridge in this format: Item: Quantity. Do not return any extra text.",
       messages: [
         {
           role: "user",
           content: [
             {
               type: "text",
-              text: "<examples>\n<example>\n<example_description>\nIf the photo is readable and consists of ingredients, this is what the response should look like.\n</example_description>\n<ideal_output>\n{\n  \"Tomatoes\": 4,\n  \"Butter\": 100,\n  \"Milk\": 500,\n  \"Eggs\": 3,\n  \"Flour\": 200,\n  \"Sugar\": 50,\n  \"Salt\": 1,\n  \"Olive Oil\": 2\n}\n</ideal_output>\n</example>\n<example>\n<example_description>\nIf the image is unclear or does not contain recognizable ingredients give this message.\n</example_description>\n<ideal_output>\n{\n  \"error\": \"The image is either unclear or does not contain recognizable ingredients. Please provide a clearer image for proper identification.\"\n}\n</ideal_output>\n</example>\n</examples>\n\n"
+              text: "<examples><example><example_description>Readable and clear items in the fridge.</example_description><ideal_output>1. Tomatoes: 4 2. Butter: 100g 3. Milk: 500ml 4. Eggs: 3</ideal_output></example><example><example_description>Image is blurry or not a fridge.</example_description><ideal_output>Error: The image is either unclear or does not contain recognizable items. Please upload a clearer image.</ideal_output></example></examples>"
             },
             {
               type: "image",
@@ -48,22 +44,16 @@ export async function POST(req) {
       ],
     });
 
-    // extract the JSON string from the content field
-    const jsonResponseString = msg.content[0].text;
+    const responseText = msg.content[0].text;
+    console.log("Response from Anthropic:", responseText);
 
-    // parse the JSON string
-    let jsonResponse;
-    try {
-      jsonResponse = JSON.parse(jsonResponseString);
-    } catch (error) {
-      console.error("Invalid JSON response:", jsonResponseString);
-      return NextResponse.json({ error: "Received an invalid JSON response." }, { status: 500 });
+    if (responseText.startsWith("Error")) {
+      return NextResponse.json({ error: responseText }, { status: 400 });
     }
 
-    // return the parsed JSON response
-    return NextResponse.json(jsonResponse);
+    return NextResponse.json({ result: responseText });
   } catch (error) {
     console.error("Error:", error);
-    return NextResponse.json({ error: "An error occurred while processing the image" }, { status: 500 });
+    return NextResponse.json({ error: "Error: An unexpected error occurred while processing the image." }, { status: 500 });
   }
 }
