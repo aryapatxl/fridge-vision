@@ -20,8 +20,6 @@ export async function POST(req) {
     // convert the image file to a buffer (temporary storage)
     const imageBuffer = await imageFile.arrayBuffer();
     const base64Image = Buffer.from(imageBuffer).toString('base64');
-
-    console.log("Base64 Image: ", base64Image);
     const anthropic = new Anthropic({ apiKey });
 
     const msg = await anthropic.messages.create({

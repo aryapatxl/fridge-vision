@@ -31,7 +31,7 @@ function ScrollingInstructions() {
         <Slider {...settings}>
           {/* 1st Instruction */}
           <div className="card-size">
-            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
               <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">1</h1>
               <div className="flex flex-col">
                 <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Take a</p>
@@ -42,7 +42,7 @@ function ScrollingInstructions() {
 
           {/* 2nd Instruction */}
           <div className="card-size">
-            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
               <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">2</h1>
               <div className="flex flex-col">
                 <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Upload</p>
@@ -53,7 +53,7 @@ function ScrollingInstructions() {
 
           {/* 3rd Instruction */}
           <div className="card-size">
-            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
               <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">3</h1>
               <div className="flex flex-col">
                 <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Press</p>
@@ -64,11 +64,22 @@ function ScrollingInstructions() {
 
           {/* 4th Instruction */}
           <div className="card-size">
-            <div className="pl-12 flex items-center bg-blue dark:bg-blue-dark">
+            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
               <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">4</h1>
               <div className="flex flex-col">
                 <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Review</p>
                 <p className="font-con font-bold text-white dark:text-white-dark text-7xl">Results.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 5th Instruction */}
+          <div className="card-size">
+            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
+              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">5</h1>
+              <div className="flex flex-col">
+              <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2"> Do It</p>
+                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Again.</p>
               </div>
             </div>
           </div>
