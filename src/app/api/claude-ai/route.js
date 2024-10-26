@@ -29,14 +29,14 @@ export async function POST(req) {
       model: "claude-3-5-sonnet-20241022",
       max_tokens: 1000,
       temperature: 0,
-      system: "You are a fridge analyzer that analyzes images of refrigerators and outputs a list of all the food items, including condiments, liquids, vegetables, fruits, etc., and their quantities in the fridge in this format: Item: Quantity. Do not return any extra text.",
+      system: "You are a food analyzer that analyzes images of refrigerators (any food) and outputs a list of all the food items, including condiments, liquids, vegetables, fruits, etc., and their quantities in the fridge in this format: Item: Quantity. Do not return any extra text.",
       messages: [
         {
           role: "user",
           content: [
             {
               type: "text",
-              text: "<examples><example><example_description>Readable and clear items in the fridge.</example_description><ideal_output>1. Tomatoes: 4 2. Butter: 100g 3. Milk: 500ml 4. Eggs: 3</ideal_output></example><example><example_description>Image is blurry or not a fridge.</example_description><ideal_output>Error: The image is either unclear or does not contain recognizable items. Please upload a clearer image.</ideal_output></example></examples>"
+              text: "<examples><example><example_description>Readable and clear items in the fridge.</example_description><ideal_output>1. Tomatoes: 4 2. Butter: 100g 3. Milk: 500ml 4. Eggs: 3</ideal_output></example><example><example_description>Image is blurry or not of food.</example_description><ideal_output>Error: The image is either unclear or does not contain recognizable items. Please upload a clearer image.</ideal_output></example></examples>"
             },
             {
               type: "image",

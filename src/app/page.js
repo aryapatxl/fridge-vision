@@ -66,16 +66,16 @@ const HomePage = () => {
               href="#" 
               className="block mt-4 xl:mt-0 p-5 max-w-lg bg-blue dark:bg-blue-dark overflow-y-auto" 
               style={{
-                minHeight: "50vh", // minimum height
+                minHeight: "55vh", // minimum height
                 maxHeight: output ? "100vh" : "50vh", // max height to 50vh when output exists, otherwise 20vh
                 overflowY: "auto" // Enable vertical scrolling if content overflows
               }}
             >
               <h5 className="text:2xl sm:text-3xl font-con font-bold tracking-tight text-white dark:text-white-dark">
-                REFRIGERATOR ITEMS {/* title for the output section */}
+                INGREDIENTS LIST {/* title for the output section */}
               </h5>
-              <p className={`mt-2 ml-1 font-mono text-xs sm:text-sm whitespace-pre-line text-white dark:text-white-dark ${output ? 'hidden' : 'opacity-50'}`}>
-                Upload a photo of your fridge! {/* temporary prompt before for action */}
+              <p className={`mt-2  font-mono text-xs sm:text-sm whitespace-pre-line text-white dark:text-white-dark ${output ? 'hidden' : 'opacity-50'}`}>
+              Snap a photo of your fridge or favorite food! {/* temporary prompt before for action */}
               </p>
               {output && ( // render output if available
                 <p className="mt-2 ml-1 flex-grow text-xs sm:text-sm max-h-[100vh] overflow-auto font-mono whitespace-pre-line text-white dark:text-white-dark">
