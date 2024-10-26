@@ -4,20 +4,27 @@ import Anthropic from "@anthropic-ai/sdk";
 export async function POST(req) {
   try {
     const apiKey = process.env.ANTHROPIC_API_KEY;
+
+    // Check for the API key in the environment variables
     if (!apiKey) {
       return NextResponse.json({ error: "Error: API key is missing." }, { status: 500 });
     }
 
+    // Extract form data and the uploaded image file
     const formData = await req.formData();
     const imageFile = formData.get('image');
+
+    // Validate the uploaded image
     if (!imageFile || !imageFile.size) {
       return NextResponse.json({ error: "Error: No image uploaded." }, { status: 400 });
     }
 
+    // Convert the image to base64 format for the API request
     const imageBuffer = await imageFile.arrayBuffer();
     const base64Image = Buffer.from(imageBuffer).toString('base64');
     const anthropic = new Anthropic({ apiKey });
 
+    // Prepare the request to the Anthropic API with image and context
     const msg = await anthropic.messages.create({
       model: "claude-3-5-sonnet-20241022",
       max_tokens: 1000,
@@ -47,13 +54,16 @@ export async function POST(req) {
     const responseText = msg.content[0].text;
     console.log("Response from Anthropic:", responseText);
 
-    // 400 = invalid argument
-    if (responseText.startsWith("Error")) {
-      return NextResponse.json({ error: responseText }, { status: 400 });
+    // Handle error responses from the AI model
+    if (responseText.toLowerCase().includes("error")) {
+      return NextResponse.json({ responseText }, { status: 400 });
     }
+    
+    // Return the successful detection result
     return NextResponse.json({ result: responseText });
   } catch (error) {
     console.error("Error:", error);
+    // Return a generic error message for unexpected errors
     return NextResponse.json({ error: "Error: An unexpected error occurred while processing the image." }, { status: 500 });
   }
 }
