@@ -21,8 +21,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-			<link rel='icon' href='/favicon.ico' />
-		</Head>
+      <link rel="icon" href="/favicon.ico" />
+      <link
+        rel="apple-touch-icon"
+        href="/Fridge-Logo.png"
+        type="image/png"
+        sizes="500x500"
+      />
+    </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
