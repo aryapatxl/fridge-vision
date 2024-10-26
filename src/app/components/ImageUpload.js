@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Image from 'next/image';
 
 const ImageUpload = ({ output, setOutput }) => {
   const [selectedImage, setSelectedImage] = useState(null); // state to hold the selected image
