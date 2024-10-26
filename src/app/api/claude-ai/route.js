@@ -56,7 +56,7 @@ export async function POST(req) {
 
     // Handle error responses from the AI model
     if (responseText.toLowerCase().includes("error")) {
-      return NextResponse.json({ responseText }, { status: 400 });
+      return NextResponse.json({ error: responseText }, { status: 400 });
     }
     
     // Return the successful detection result

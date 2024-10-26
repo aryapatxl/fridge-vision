@@ -49,8 +49,10 @@ const ImageUpload = ({ output, setOutput }) => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json(); // parse the error response
-        setUploadStatus(errorData.error || "An unknown error occurred."); // update status with error message
+        const errorData = await response.json(); // Parse the error response
+        // Update status with error message or fallback to a default message
+        setUploadStatus(errorData.error || "An unknown error occurred.");
+        setOutput("");
         return;
       }
 
@@ -79,14 +81,15 @@ const ImageUpload = ({ output, setOutput }) => {
               onChange={handleImageChange} // handle image selection
             />
             {uploadStatus && ( // display upload status if it exists
-              <small 
-                className={`font-mono pt-1 pl-0.5 ${
-                  uploadStatus.toLowerCase().includes("Error" || "Please") ? "text-red dark:text-red-dark" : 
-                  uploadStatus.toLowerCase().includes("successful") ? "text-green dark:text-green-dark" : 
-                  "text-blue dark:text-blue-dark"
-                }`}>
-                {uploadStatus} {/* show the current upload status */}
-              </small>
+             <small 
+             className={`font-mono pt-1 pl-0.5 ${
+               uploadStatus.toLowerCase().includes("error") || 
+               uploadStatus.includes("Please") ? "text-red dark:text-red-dark" : 
+               uploadStatus.includes("successful") ? "text-green dark:text-green-dark" : 
+               "text-blue dark:text-blue-dark"
+             }`}>
+             {uploadStatus} {/* show the current upload status */}
+           </small>
             )}
           </div>
 
@@ -99,9 +102,9 @@ const ImageUpload = ({ output, setOutput }) => {
           <button
             type="button"
             onClick={handleDetect} // handle detection when button is clicked
-            disabled={uploadStatus.toLowerCase().includes("Error") || uploadStatus === "Detecting..."} // disable button if there's an error or if detecting
+            disabled={uploadStatus.includes("Error") || uploadStatus === "Detecting..."} // disable button if there's an error or if detecting
             className={`font-mono text-white dark:text-white-dark bg-blue dark:bg-blue-dark hover:bg-black-100 focus:ring-4 focus:outline-none focus:ring-white text-1xl sm:text-2xl px-10 py-5 ${
-              uploadStatus.toLowerCase().includes("Error") || uploadStatus === "Detecting..." ? "opacity-50 cursor-not-allowed" : ""
+              uploadStatus.includes("Error") || uploadStatus === "Detecting..." ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
             Detect

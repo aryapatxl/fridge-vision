@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import ImageUpload from "./components/ImageUpload-Print";
 import ScrollingInstructions from "./components/ScrollingInstructions";
 
+
+
 const HomePage = () => {
   const [output, setOutput] = useState(""); // state to hold the output from Claude-AI-API
 
@@ -49,7 +51,7 @@ const HomePage = () => {
       <div className="bg-blue dark:bg-blue-dark">
         <ScrollingInstructions /> {/* component displaying instructions */}
       </div>
-
+      
       {/* photo uploader and output section */}
       <div className="flex flex-col md:flex-row items-top justify-around bg-white dark:bg-white-dark h-[100vh] w-full">
         <div className="ml-[0vw] sm:ml-[12vw] mt-[4.5vh] w-full md:w-1/2"> {/* uploader on full width for small screens, half on medium and up */}
