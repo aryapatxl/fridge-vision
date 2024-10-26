@@ -66,8 +66,8 @@ const HomePage = () => {
               href="#" 
               className="block mt-4 xl:mt-0 p-5 max-w-lg bg-blue dark:bg-blue-dark overflow-y-auto" 
               style={{
-                minHeight: "60vh", // minimum height
-                maxHeight: output ? "100vh" : "60vh", // max height to 50vh when output exists, otherwise 20vh
+                minHeight: "50vh", // minimum height
+                maxHeight: output ? "100vh" : "50vh", // max height to 50vh when output exists, otherwise 20vh
                 overflowY: "auto" // Enable vertical scrolling if content overflows
               }}
             >

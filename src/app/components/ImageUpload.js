@@ -96,7 +96,7 @@ const ImageUpload = ({ output, setOutput }) => {
 
           {selectedImage && ( // show the selected image if it exists
           <div className="flex flex-col items-center mt-4">
-            <Image
+            <img
               src={selectedImage}
               alt="Selected"
               className="hidden md:block min-h-[50%] max-h-[400px] mx-auto" // hide on small screens, show on medium and up
