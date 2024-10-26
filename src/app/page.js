@@ -26,8 +26,8 @@ const HomePage = () => {
           <h1 className="text-5xl sm:text-8xl md:text-10xl lg:text-12xl font-con font-bold text-blue dark:text-blue-dark leading-none tracking-tight">
             YOUR {/* first part of the title */}
           </h1>
-          <div className="ms-auto mr-14 mb-16"> {/* aligns the paragraph to the right */}
-            <p className="text-right text-xs me-auto sm:text-sm font-mono text-blue dark:text-blue-dark whitespace-normal max-w-xs">
+          <div className="ms-auto mr-14 mb-16 hidden sm:block"> {/* aligns the paragraph to the right */}
+            <p className="text-right text-xs sm:text-sm me-auto font-mono text-blue dark:text-blue-dark whitespace-normal max-w-xs">
               An AI-powered ingredient detector that helps 
               you identify the items in your refrigerator
               with a single photo! {/* description of the app */}
