@@ -19,7 +19,7 @@ const HomePage = () => {
       </div>
 
       {/* title section with large headings */}
-      <div className="bg-white dark:bg-white-dark h-[40vh] sm:h-[70vh] w-full text-left pl-4 sm:pl-12 md:pl-24 lg:pl-36 xl:pl-48 flex flex-col justify-center">
+      <div className="bg-white dark:bg-white-dark h-[40vh] sm:h-[75vh] w-full text-left pl-4 sm:pl-12 md:pl-24 lg:pl-36 xl:pl-48 flex flex-col justify-center">
         <div className="flex items-center"> 
           <h1 className="text-5xl sm:text-8xl md:text-10xl lg:text-12xl font-con font-bold text-blue dark:text-blue-dark leading-none tracking-tight">
             YOUR {/* first part of the title */}
@@ -43,22 +43,7 @@ const HomePage = () => {
           UNC<span style={{ display: 'inline-block', transform: 'skewX(-15deg)' }}>O</span>VERED
         </h1>
       </div>
-      <div className="bg-white dark:bg-white-dark">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1}
-          stroke="currentColor"
-          className="ml-10 size-10 bg-white dark:bg-white-dark text-blue dark:text-blue-dark"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-          />
-        </svg>
-      </div>
+     
 
       {/* scrolling instructions section */}
       <div className="bg-blue dark:bg-blue-dark">
