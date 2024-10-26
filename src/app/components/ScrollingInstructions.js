@@ -1,8 +1,9 @@
+// ScrollingInstructions.js: creates cards using InstructionCard.js and puts them into a carousel
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import InstructionCard from "./InstructionCard"; // import the InstructionCard component
+import InstructionCard from "./InstructionCard";
 
 // array of instructions with step numbers, titles, and subtitles
 const instructions = [
@@ -16,35 +17,36 @@ const instructions = [
 function ScrollingInstructions() {
   // settings for the slick carousel
   const settings = {
-    infinite: false, // disables infinite scrolling
-    slidesToShow: 3, // number of slides to show at once
-    swipeToSlide: true, // enables swipe to slide
-    draggable: true, // enables dragging to slide
-    responsive: [ // responsive settings for different screen sizes
+    infinite: false, // prevents infinite scrolling
+    slidesToShow: 3, // shows three slides at once
+    swipeToSlide: true, // enables swipe functionality
+    draggable: true,
+    responsive: [
       {
-        breakpoint: 1024, // for screens <= 1024px
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 2, // show 2 slides
+          slidesToShow: 2, // shows two slides on medium screens
         },
       },
       {
-        breakpoint: 768, // for screens <= 768px
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1, // show 1 slide
+          slidesToShow: 1, // shows one slide on smaller screens
         },
       },
     ],
   };
 
   return (
-    <div className="slider-container"> {/* container for the slider */}
-      <Slider {...settings}> {/* render the Slider component with the defined settings */}
-        {instructions.map((instruction, index) => ( // iterate through instructions array
+    // container for the slider to encapsulate styling
+    <div className="slider-container">
+      <Slider {...settings}>
+        {instructions.map((instruction, index) => ( // create individual cards
           <InstructionCard
-            key={index} // unique key for each instruction card
-            stepNumber={instruction.stepNumber} // pass step number prop
-            title={instruction.title} // pass title prop
-            subtitle={instruction.subtitle} // pass subtitle prop
+            key={index}
+            stepNumber={instruction.stepNumber}
+            title={instruction.title}
+            subtitle={instruction.subtitle}
           />
         ))}
       </Slider>
@@ -52,4 +54,4 @@ function ScrollingInstructions() {
   );
 }
 
-export default ScrollingInstructions; // export the ScrollingInstructions component for use in other parts of the app
+export default ScrollingInstructions;

@@ -1,6 +1,6 @@
+// InstructionCard.js: creates stylish cards for app instructions
 import React from "react";
 
-// Instruction card component
 const InstructionCard = ({ stepNumber, title, subtitle }) => (
   <div className="card-size">
     <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">

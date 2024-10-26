@@ -1,3 +1,5 @@
+// ImageUpload.js: Handles image uploading and validation
+
 import React, { useState, useRef } from "react";
 import Image from 'next/image';
 
@@ -6,7 +8,6 @@ const ImageUpload = ({ output, setOutput }) => {
   const [uploadStatus, setUploadStatus] = useState(""); // state to manage upload status
   const fileInputRef = useRef(null); // ref to access the file input element
 
-  // handle image selection and validation
   const handleImageChange = (event) => {
     const file = event.target.files[0]; // get the selected file
     if (file) {

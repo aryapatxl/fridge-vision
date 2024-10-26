@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import ImageUpload from "./components/ImageUpload";
 import ScrollingInstructions from "./components/ScrollingInstructions";
-
-
+import IngredientsList from "./components/IngredientsList"; // Import the IngredientsList component
 
 const HomePage = () => {
   const [output, setOutput] = useState(""); // state to hold the output from Claude-AI-API
@@ -29,7 +28,7 @@ const HomePage = () => {
           <div className="ms-auto mr-14 mb-16 hidden sm:block"> {/* aligns the paragraph to the right */}
             <p className="text-right text-xs sm:text-sm me-auto font-mono text-blue dark:text-blue-dark whitespace-normal max-w-xs">
               An AI-powered ingredient detector that helps 
-              you identify the items in your refrigerator
+              you identify the items in your refrigerator or plate
               with a single photo! {/* description of the app */}
             </p>
           </div>
@@ -46,7 +45,6 @@ const HomePage = () => {
         </h1>
       </div>
      
-
       {/* scrolling instructions section */}
       <div className="bg-blue dark:bg-blue-dark">
         <ScrollingInstructions /> {/* component displaying instructions */}
@@ -59,34 +57,9 @@ const HomePage = () => {
         </div>
 
         {/* output display area */}
-        
         <div className="overflow-y-auto flex items-center justify-center w-full"> {/* ensure full width and vertical scrolling if needed */}
-          <div> 
-            <a 
-              href="#" 
-              className="block mt-4 xl:mt-0 p-5 max-w-lg bg-blue dark:bg-blue-dark overflow-y-auto" 
-              style={{
-                minWidth: "23vw",
-                minHeight: "55vh", // minimum height
-                maxHeight: output ? "100vh" : "50vh", // max height to 50vh when output exists, otherwise 20vh
-                overflowY: "auto" // Enable vertical scrolling if content overflows
-              }}
-            >
-              <h5 className="text:2xl sm:text-3xl font-con font-bold tracking-tight text-white dark:text-white-dark">
-                INGREDIENTS LIST {/* title for the output section */}
-              </h5>
-              <p className={`mt-2  font-mono text-xs sm:text-sm whitespace-pre-line text-white dark:text-white-dark ${output ? 'hidden' : 'opacity-50'}`}>
-              Upload a photo of any food! {/* temporary prompt before for action */}
-              </p>
-              {output && ( // render output if available
-                <p className="mt-2 ml-1 flex-grow text-xs sm:text-sm max-h-[100vh] overflow-auto font-mono whitespace-pre-line text-white dark:text-white-dark">
-                  {output} {/* display the output from the image upload */}
-                </p>
-              )}
-            </a>
-          </div>
+          <IngredientsList output={output} /> {/* use IngredientsList component */}
         </div>
-
       </div>
     </div>
   );

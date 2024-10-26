@@ -1,3 +1,4 @@
+// Claude-ai/route.js: A serverless function used to call the Claude API, enables API key protection
 import { NextResponse } from 'next/server';
 import Anthropic from "@anthropic-ai/sdk";
 
