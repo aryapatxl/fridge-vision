@@ -44,72 +44,64 @@ const ImageUpload = ({ output, setOutput }) => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to detect image.");
+        const errorData = await response.text();
+        setUploadStatus(errorData); // Set the error message to uploadStatus
+        return; // Exit early on error
       }
 
-      const data = await response;
-      const detectionResult = data.result; // Store the detection output in a variable
-      setOutput(detectionResult); // Set the output state to be used in the parent component
+      const data = await response.json();
+      const detectionResult = data.result;
+      setOutput(detectionResult);
 
-      setUploadStatus("Detection successful!"); // Adjust as needed based on response
-
-      // You can use detectionResult variable as needed in your frontend logic
-
+      setUploadStatus("Ingredient detection successful!");
     } catch (error) {
-      setUploadStatus("An error occurred while detecting the image.");
-      setOutput(""); // Optionally clear the output state
+      console.error("An error occurred while reading the image:", error);
+      setUploadStatus("An unexpected error occurred.");
+      setOutput(""); 
     }
   };
 
+  // form courtesy of Tailwind CSS
   return (
-    <section className="container w-full mx-auto items-center py-32">
-      <div className="max-w-lg mx-0 bg-white dark:bg-white-dark overflow-hidden p-8">
-        <div className="flex flex-col gap-6">
-          <div className={`relative flex w-full max-w-sm flex-col gap-1 ${uploadStatus.startsWith("Error") ? "text-red-500" : "text-green-500"}`}>
-            <label htmlFor="fileInput" className="w-fit flex items-center gap-1 pl-0.5 text-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor" className="w-4 h-4">
-                {uploadStatus.startsWith("Error") ? (
-                  <path d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
-                ) : (
-                  <path fillRule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clipRule="evenodd" />
-                )}
-              </svg>
-              Upload File
-            </label>
+    <section className="container w-full mx-auto items-center pt-36">
+      <div className="max-w-lg mx-0 overflow-hidden align-center">
+        <div className="flex flex-col gap-4">
+          <div className="relative flex w-full max-w-lg flex-col gap-1">
             <input
               ref={fileInputRef}
               id="fileInput"
               type="file"
-              className={`w-full max-w-md overflow-clip rounded-md border ${uploadStatus.startsWith("Error") ? "border-red-500" : "border-green-500"} bg-neutral-50/50 text-sm ${uploadStatus.startsWith("Error") ? "text-red-500" : "text-green-500"} file:mr-4 file:cursor-pointer file:border-none file:bg-neutral-50 file:px-4 file:py-2 file:font-medium file:text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-75 dark:bg-neutral-900/50 dark:file:bg-neutral-900 dark:file:text-white dark:focus-visible:outline-white`}
+              className="text-lg w-full max-w-lg overflow-wrap dark:border-blue-dark border border-blue bg-blue dark:bg-blue-dark  text-white dark:text-white-dark file:mr-4 file:cursor-pointer file:border-none file:bg-white dark:file:bg-white-dark file:px-4 file:py-2 file:font-mono file:text-blue dark:file:text-blue-dark dark:focus-visible:outline-blue"
               onChange={handleImageChange}
             />
-            {uploadStatus.startsWith("Error") && <small className="pl-0.5">Error: Please choose a file for upload</small>}
+            {uploadStatus && (
+  <small 
+    className={`font-mono pt-1 pl-0.5 ${
+      uploadStatus.includes("Error") ? "text-red-600 dark:text-red-dark" : 
+      uploadStatus.includes("Detecting...") ? "text-blue-600" : 
+      uploadStatus.includes("successful") ? "text-green-600" : 
+      "text-gray-600" 
+    }`}
+  >
+    {uploadStatus}
+  </small>
+)}
           </div>
 
           {selectedImage && (
             <div className="flex flex-col items-center mt-4">
-              <img src={selectedImage} alt="Selected" className="min-h-[40%] max-h-96 mx-auto" />
-              <div className="mt-4">
-                {uploadStatus.startsWith("Error") && <p className="text-red-600">{uploadStatus}</p>}
-              </div>
+              <img src={selectedImage} alt="Selected" className="min-h-[50%] max-h-96 mx-auto" />
             </div>
           )}
 
           <button
             type="button"
             onClick={handleDetect}
-            className="text-white bg-blue dark:bg-blue-dark hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue font-medium rounded-lg text-lg px-8 py-4"
+            className="font-mono text-white dark:text-white-dark bg-blue dark:bg-blue-dark hover:bg-black-100 focus:ring-4 focus:outline-none focus:ring-white text-lg px-8 py-4"
           >
             Detect
           </button>
 
-          {uploadStatus && !uploadStatus.startsWith("Error") && (
-            <div className="mt-4 text-center">
-              <p className={`text-gray-700 ${uploadStatus.startsWith("Error") ? "text-red-600" : "text-green-600"}`}>
-                {uploadStatus}
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </section>

@@ -47,10 +47,10 @@ export async function POST(req) {
     const responseText = msg.content[0].text;
     console.log("Response from Anthropic:", responseText);
 
+    // 400 = invalid argument
     if (responseText.startsWith("Error")) {
       return NextResponse.json({ error: responseText }, { status: 400 });
     }
-
     return NextResponse.json({ result: responseText });
   } catch (error) {
     console.error("Error:", error);

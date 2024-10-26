@@ -22,7 +22,11 @@ module.exports = {
         light: '#e9e6d9',
         DEFAULT: '#e9e6d9',
         dark: '#1c190f', // black
-
+      },
+      'red': { // for errors
+        light: '#B00020',
+        DEFAULT: '#B00020',
+        dark: '#CF6679',
       }
     },
     extend: {
