@@ -72,6 +72,7 @@ const ImageUpload = ({ output, setOutput }) => {
   // render the image upload section
   return (
     <section className="container w-full mx-auto items-center pt-36">
+      <p className="font-con text-xs pb-1 pl-0.5 text-blue dark:text-blue-dark " >JPEG only. (MAX 30MB)</p>
       <div className="max-w-xl mx-0 overflow-hidden align-center"> {/* container for image upload */}
         <div className="flex flex-col gap-4"> {/* vertical flexbox for layout */}
           <div className="relative flex w-full flex-col gap-1"> {/* container for input and status message */}
