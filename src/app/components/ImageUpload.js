@@ -77,7 +77,7 @@ const ImageUpload = ({ output, setOutput }) => {
               ref={fileInputRef} // reference to access the file input
               id="fileInput"
               type="file"
-              className="text-1xl sm:text-2xl w-full border border-blue dark:border-blue-dark bg-blue dark:bg-blue-dark text-white dark:text-white-dark file:mr-4 file:cursor-pointer file:border-none file:bg-white dark:file:bg-white-dark file:px-4 file:py-3 file:font-mono file:text-blue dark:file:text-blue-dark dark:focus-visible:outline-blue" 
+              className="text-xs sm:text-sm w-full border border-blue dark:border-blue-dark bg-blue dark:bg-blue-dark text-white dark:text-white-dark file:mr-4 file:cursor-pointer file:border-none file:bg-white dark:file:bg-white-dark file:px-4 file:py-3 file:font-mono file:text-blue dark:file:text-blue-dark dark:focus-visible:outline-blue" 
               onChange={handleImageChange} // handle image selection
             />
             {uploadStatus && ( // display upload status if it exists
@@ -85,7 +85,7 @@ const ImageUpload = ({ output, setOutput }) => {
              className={`font-mono pt-1 pl-0.5 ${
                uploadStatus.toLowerCase().includes("error") || 
                uploadStatus.includes("Please") ? "text-red dark:text-red-dark" : 
-               uploadStatus.includes("successful") ? "text-green dark:text-green-dark" : 
+               uploadStatus.includes("successful") ? "text-green" : 
                "text-blue dark:text-blue-dark"
              }`}>
              {uploadStatus} {/* show the current upload status */}
@@ -94,16 +94,20 @@ const ImageUpload = ({ output, setOutput }) => {
           </div>
 
           {selectedImage && ( // show the selected image if it exists
-            <div className="flex flex-col items-center mt-4">
-              <img src={selectedImage} alt="Selected" className="min-h-[50%] max-h-[400px] mx-auto" /> {/* display image preview */}
-            </div>
-          )}
+          <div className="flex flex-col items-center mt-4">
+            <img
+              src={selectedImage}
+              alt="Selected"
+              className="hidden md:block min-h-[50%] max-h-[400px] mx-auto" // hide on small screens, show on medium and up
+            /> {/* display image preview */}
+          </div>
+            )}
 
           <button
             type="button"
             onClick={handleDetect} // handle detection when button is clicked
             disabled={uploadStatus.includes("Error") || uploadStatus === "Detecting..."} // disable button if there's an error or if detecting
-            className={`font-mono text-white dark:text-white-dark bg-blue dark:bg-blue-dark hover:bg-black-100 focus:ring-4 focus:outline-none focus:ring-white text-1xl sm:text-2xl px-10 py-5 ${
+            className={`font-mono text-white dark:text-white-dark bg-blue dark:bg-blue-dark hover:bg-black-100 focus:ring-4 focus:outline-none focus:ring-white text-xs sm:text-sm px-10 py-5 ${
               uploadStatus.includes("Error") || uploadStatus === "Detecting..." ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

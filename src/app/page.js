@@ -1,6 +1,6 @@
 'use client'; // enables client-side rendering
 import React, { useState } from "react";
-import ImageUpload from "./components/ImageUpload-Print";
+import ImageUpload from "./components/ImageUpload";
 import ScrollingInstructions from "./components/ScrollingInstructions";
 
 
@@ -28,8 +28,8 @@ const HomePage = () => {
           </h1>
           <div className="ms-auto mr-14 mb-16"> {/* aligns the paragraph to the right */}
             <p className="text-right text-xs me-auto sm:text-sm font-mono text-blue dark:text-blue-dark whitespace-normal max-w-xs">
-              An AI-powered fridge detector that helps 
-              you identify all the items in your refrigerator
+              An AI-powered ingredient detector that helps 
+              you identify the items in your refrigerator
               with a single photo! {/* description of the app */}
             </p>
           </div>
@@ -53,27 +53,32 @@ const HomePage = () => {
       </div>
       
       {/* photo uploader and output section */}
-      <div className="flex flex-col md:flex-row items-top justify-around bg-white dark:bg-white-dark h-[100vh] w-full">
+      <div className="flex flex-col md:flex-row sm:items-top sm:justify-around bg-white dark:bg-white-dark h-[100vh] w-full">
         <div className="ml-[0vw] sm:ml-[12vw] mt-[4.5vh] w-full md:w-1/2"> {/* uploader on full width for small screens, half on medium and up */}
           <ImageUpload output={output} setOutput={setOutput} /> {/* upload component with output state */}
         </div>
 
         {/* output display area */}
+        
         <div className="overflow-y-auto flex items-center justify-center w-full"> {/* ensure full width and vertical scrolling if needed */}
           <div> 
             <a 
               href="#" 
-              className="block p-4 max-w-lg bg-blue dark:bg-blue-dark overflow-y-auto" 
-              style={{ minHeight: "500px", maxHeight: output ? "700px" : "200px" }} // set min and max height for the output box
+              className="block mt-4 xl:mt-0 p-5 max-w-lg bg-blue dark:bg-blue-dark overflow-y-auto" 
+              style={{
+                minHeight: "60vh", // minimum height
+                maxHeight: output ? "100vh" : "60vh", // max height to 50vh when output exists, otherwise 20vh
+                overflowY: "auto" // Enable vertical scrolling if content overflows
+              }}
             >
-              <h5 className="text-4xl font-con font-bold tracking-tight text-white dark:text-white-dark">
+              <h5 className="text:2xl sm:text-3xl font-con font-bold tracking-tight text-white dark:text-white-dark">
                 REFRIGERATOR ITEMS {/* title for the output section */}
               </h5>
-              <p className={`mt-2 font-mono text-sm whitespace-pre-line text-white dark:text-white-dark ${output ? 'hidden' : 'opacity-50'}`}>
-                Upload a photo of your fridge! {/* temporary prompt for user action */}
+              <p className={`mt-2 ml-1 font-mono text-xs sm:text-sm whitespace-pre-line text-white dark:text-white-dark ${output ? 'hidden' : 'opacity-50'}`}>
+                Upload a photo of your fridge! {/* temporary prompt before for action */}
               </p>
               {output && ( // render output if available
-                <p className="mt-1 ml-1 font-mono whitespace-pre-line text-white dark:text-white-dark">
+                <p className="mt-2 ml-1 flex-grow text-xs sm:text-sm max-h-[100vh] overflow-auto font-mono whitespace-pre-line text-white dark:text-white-dark">
                   {output} {/* display the output from the image upload */}
                 </p>
               )}
