@@ -27,7 +27,12 @@ module.exports = {
         light: '#B00020',
         DEFAULT: '#B00020',
         dark: '#CF6679',
-      }
+      },
+      'green': {
+        light: '#69DA50',
+        DEFAULT: '#69DA50',
+        dark: '#90DF7F',
+      },
     },
     extend: {
       fontSize: {

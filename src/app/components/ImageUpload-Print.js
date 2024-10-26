@@ -5,6 +5,7 @@ const ImageUpload = ({ output, setOutput }) => {
   const [uploadStatus, setUploadStatus] = useState("");
   const fileInputRef = useRef(null);
 
+  // Picture uploading
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -27,6 +28,7 @@ const ImageUpload = ({ output, setOutput }) => {
     }
   };
 
+  // Detect button
   const handleDetect = async () => {
     if (!selectedImage) {
       setUploadStatus("Please select an image before detecting.");
@@ -74,17 +76,18 @@ const ImageUpload = ({ output, setOutput }) => {
               className="text-lg w-full max-w-lg overflow-wrap dark:border-blue-dark border border-blue bg-blue dark:bg-blue-dark  text-white dark:text-white-dark file:mr-4 file:cursor-pointer file:border-none file:bg-white dark:file:bg-white-dark file:px-4 file:py-2 file:font-mono file:text-blue dark:file:text-blue-dark dark:focus-visible:outline-blue"
               onChange={handleImageChange}
             />
+            {/* Conditionals for message coloring */}
             {uploadStatus && (
-  <small 
-    className={`font-mono pt-1 pl-0.5 ${
-      uploadStatus.includes("Error") ? "text-red-600 dark:text-red-dark" : 
-      uploadStatus.includes("Detecting...") ? "text-blue-600" : 
-      uploadStatus.includes("successful") ? "text-green-600" : 
-      "text-gray-600" 
-    }`}
-  >
-    {uploadStatus}
-  </small>
+            <small 
+              className={`font-mono pt-1 pl-0.5 ${
+                uploadStatus.includes("Error" || "Please") ? "text-red dark:text-red-dark" : 
+                uploadStatus.includes("successful") ? "text-green dark:text-green-dark" : 
+                // default
+                "text-blue dark:text-blue-dark"
+              }`}
+            >
+              {uploadStatus}
+            </small>
 )}
           </div>
 
@@ -94,10 +97,15 @@ const ImageUpload = ({ output, setOutput }) => {
             </div>
           )}
 
+          {/* Detect Button */}
           <button
             type="button"
             onClick={handleDetect}
-            className="font-mono text-white dark:text-white-dark bg-blue dark:bg-blue-dark hover:bg-black-100 focus:ring-4 focus:outline-none focus:ring-white text-lg px-8 py-4"
+            // Disable the button if there is an error, picture is not the right format or if it the POST req was already made
+            disabled={uploadStatus.includes("Error") || uploadStatus === "Detecting..."}
+            className={`font-mono text-white dark:text-white-dark bg-blue dark:bg-blue-dark hover:bg-black-100 focus:ring-4 focus:outline-none focus:ring-white text-lg px-8 py-4 ${
+              uploadStatus.includes("Error") || uploadStatus === "Detecting..." ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             Detect
           </button>

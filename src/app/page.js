@@ -33,18 +33,18 @@ const HomePage = () => {
         <ScrollingInstructions />
       </div>
 
-      {/* Photo Uploader Section */}
-      <div className="bg-white dark:bg-white-dark h-[70vh] w-full">
-      <ImageUpload output={output} setOutput={setOutput} />
-      </div>
-
- 
-      {output && (
-        <div className="mt-4">
-          <h2>Detection Result:</h2>
-          <p>{output}</p>
+     {/* Photo Uploader and Output Section */}
+      <div className="flex bg-white dark:bg-white-dark h-[70vh] w-full">
+        <div className="w-1/2">
+          <ImageUpload output={output} setOutput={setOutput} />
         </div>
-      )}
+
+        {output && (
+          <div className="w-1/2 flex items-center justify-center px-4">
+            <p className="text-lg font-mono whitespace-pre-line">{output}</p> {/* Whitespace pre line to keep the /n */}
+          </div>
+        )}
+      </div>
 
     </div>
   );
