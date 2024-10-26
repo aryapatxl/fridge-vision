@@ -2,6 +2,15 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import InstructionCard from "./InstructionCard";
+
+const instructions = [
+  { stepNumber: 1, title: "Take a", subtitle: "Picture." },
+  { stepNumber: 2, title: "Upload", subtitle: "It." },
+  { stepNumber: 3, title: "Press", subtitle: "Detect." },
+  { stepNumber: 4, title: "Review", subtitle: "Results." },
+  { stepNumber: 5, title: "Do It", subtitle: "Again." },
+];
 
 function ScrollingInstructions() {
   const settings = {
@@ -26,66 +35,18 @@ function ScrollingInstructions() {
   };
 
   return (
-    <>
-      <div className="slider-container">
-        <Slider {...settings}>
-          {/* 1st Instruction */}
-          <div className="card-size">
-            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
-              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">1</h1>
-              <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Take a</p>
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">Picture.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* 2nd Instruction */}
-          <div className="card-size">
-            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
-              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">2</h1>
-              <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Upload</p>
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">It.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* 3rd Instruction */}
-          <div className="card-size">
-            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
-              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">3</h1>
-              <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Press</p>
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">Detect.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* 4th Instruction */}
-          <div className="card-size">
-            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
-              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">4</h1>
-              <div className="flex flex-col">
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Review</p>
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl">Results.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* 5th Instruction */}
-          <div className="card-size">
-            <div className="py-10 pl-12 flex items-center bg-blue dark:bg-blue-dark">
-              <h1 className="text-15xl font-mono text-white dark:text-white-dark mr-7">5</h1>
-              <div className="flex flex-col">
-              <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2"> Do It</p>
-                <p className="font-con font-bold text-white dark:text-white-dark text-7xl mb-2">Again.</p>
-              </div>
-            </div>
-          </div>
-        </Slider>
-      </div>
-    </>
+    <div className="slider-container">
+      <Slider {...settings}>
+        {instructions.map((instruction, index) => (
+          <InstructionCard
+            key={index}
+            stepNumber={instruction.stepNumber}
+            title={instruction.title}
+            subtitle={instruction.subtitle}
+          />
+        ))}
+      </Slider>
+    </div>
   );
 }
 

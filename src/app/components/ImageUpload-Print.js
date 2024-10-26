@@ -84,13 +84,13 @@ const ImageUpload = ({ output, setOutput }) => {
                 uploadStatus.includes("successful") ? "text-green dark:text-green-dark" : 
                 // default
                 "text-blue dark:text-blue-dark"
-              }`}
-            >
+              }`}>
               {uploadStatus}
             </small>
-)}
+            )}
           </div>
 
+          {/** Picked Photo Display */}
           {selectedImage && (
             <div className="flex flex-col items-center mt-4">
               <img src={selectedImage} alt="Selected" className="min-h-[50%] max-h-96 mx-auto" />
@@ -109,7 +109,6 @@ const ImageUpload = ({ output, setOutput }) => {
           >
             Detect
           </button>
-
         </div>
       </div>
     </section>
