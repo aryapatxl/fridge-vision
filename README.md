@@ -2,7 +2,7 @@
 An AI-Powered food detector! [Live Site](https://fridge-vision-x.vercel.app)
 
 ## Demo
-[![Demo Video](https://img.youtube.com/vi/78NxnliU7IY/0.jpg)](h[ttps://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://youtu.be/78NxnliU7IY))
+[![Demo Video](https://img.youtube.com/vi/78NxnliU7IY/0.jpg)](h[ttps://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://youtu.be/78NxnliU7IY)
 
 ## Key Functionalities
 - **Food Detection**: Upload a photo of food to receive a detailed list of its ingredients and estimated quantities.
