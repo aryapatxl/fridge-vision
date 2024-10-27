@@ -26,7 +26,8 @@ An AI-Powered food detector! [Live Site](https://fridge-vision-x.vercel.app)
 
 ### Backend
 - `Vercel`: Integrates perfectly with Next.js.
-- `Claude AI`
+- `React-Slick`: Carousel component
+- `Claude-AI`
 
 ## Advantages of Using `Claude-AI`
 - Through my research, Claude AI outperforms other food detection models. Notably: [Foodvisor](https://www.foodvisor.io/en/vision/), [LogMeal](https://logmeal.com/api/demo/) & [Roboflow](https://universe.roboflow.com/fridgeitems/object-fridge-items/model/1?image=https%3A%2F%2Fsource.roboflow.com%2FhMTNbTsxvtZV8ca02dU1rFUOjSh2%2FsbpIo1SWb2JCUP9HfV2M%2Foriginal.jpg)
