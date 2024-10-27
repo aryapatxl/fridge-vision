@@ -29,12 +29,10 @@ An AI-powered food detector that identifies ingredients and estimates quantities
 - `React-Slick`: Carousel component
 - `Claude-AI`
 
-## Advantages of Using `Claude-AI`
-- Through my research, Claude AI outperforms other food detection models. Notably: [Foodvisor](https://www.foodvisor.io/en/vision/), [LogMeal](https://logmeal.com/api/demo/) & [Roboflow](https://universe.roboflow.com/fridgeitems/object-fridge-items/model/1?image=https%3A%2F%2Fsource.roboflow.com%2FhMTNbTsxvtZV8ca02dU1rFUOjSh2%2FsbpIo1SWb2JCUP9HfV2M%2Foriginal.jpg)
-- **Continuous Learning**: Claude AI adapts to new food items and trends without needing extensive retraining.
-- **Natural Language Processing**: Its advanced capabilities allow for understanding complex queries, enhancing user experience.
-- **Reduced Development Overhead**: Claude AI minimizes the need for feature engineering, speeding up development and deployment.
-- **Better Handling of Ambiguities**: The model effectively interprets ambiguous data, providing relevant results even with incomplete input.
+## Why `Claude-AI`?
+My reasoning touches on the `AI` vs `ML` debate. In short, ML models are based on data and rely heavily on pattern matching causing them to make incorrect inferences at times. For example when shown a picture of lettuce, the `LogMeal` model returned various options with certainty scores: [Celery: 25.07%, Endive Stew: 21.57%, Endives: 20.22% , Lettuce: 19.08%, Cabbage: 14.05%]. Claude-AI identified it correctly with a certainty score of 90%-95% and specified the kind of lettuce.
+
+Generally, AI models have a deeper understanding of context, concepts, and complex relationships (reason!). In this context, Claude-AI is particularly advanced. It outperformed food detection models such as [Foodvisor](https://www.foodvisor.io/en/vision/), [LogMeal](https://logmeal.com/api/demo/) & [Roboflow](https://universe.roboflow.com/fridgeitems/object-fridge-items/model/1?image=https%3A%2F%2Fsource.roboflow.com%2FhMTNbTsxvtZV8ca02dU1rFUOjSh2%2FsbpIo1SWb2JCUP9HfV2M%2Foriginal.jpg) and AI models such as `Google Gemini`. Claude AI handles ambiguous data exceptionally, accurately identifying when images are blurry, not food-related, depict an empty fridge, etc. Lastly, it continuously learns, it is able to adapt to new food items without extensive retraining, making it the top pick for this project.
 
 ## Challenges
 - **JSON Output**
