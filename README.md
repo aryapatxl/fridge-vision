@@ -1,6 +1,9 @@
 ## Fridge Vision
 An AI-Powered food detector! [Live Site](https://fridge-vision-x.vercel.app)
 
+## Demo
+[![Demo Video](https://img.youtube.com/vi/78NxnliU7IY/0.jpg)](h[ttps://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://youtu.be/78NxnliU7IY))
+
 ## Key Functionalities
 - **Food Detection**: Upload a photo of food to receive a detailed list of its ingredients and estimated quantities.
 - **Serverless Architecture**: A serverless function to securely handle API requests to protect sensitive information.
@@ -41,6 +44,3 @@ An AI-Powered food detector! [Live Site](https://fridge-vision-x.vercel.app)
    - **Problem**: I faced challenges in designing the file upload component to accommodate all the use cases such as uploading a file, replacing a file, sending the file to the API, etc. My initial approach was to hard-code each of these through buttons and messages. It became pretty messy.
 
    - **Resolution**: After some research, I switched my logic. Using simple buttons would be more usable. Instead of separate upload and replace buttons, I found a Tailwind component that combined both simply. Also, I opted to disable the detect button if the model is loading or if the file input is incorrect.
-
-## Demo
-[![Demo Video](https://img.youtube.com/vi/78NxnliU7IY/0.jpg)](h[ttps://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://youtu.be/78NxnliU7IY))
