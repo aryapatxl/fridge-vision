@@ -10,7 +10,7 @@ An AI-powered food detector that identifies ingredients and estimates quantities
 - **Error Handling & Feedback**: Informative error messages, accounts for issues such as unsupported file types, file size limitations, unreadable images, and non-food uploads.
 - **Modular Code**: Built with reusable components for maintainability and scalability. A cleaner codebase.
 
-## Notable UI Features
+## Notable UX/UI Features
 - **Carousel Instructions**: A fun, engaging way to guide users step-by-step.
 - **Upload Errors**: Color-coded for easy identification.
 - **Light/Dark Mode**: Reduces eye-strain and saves battery.
