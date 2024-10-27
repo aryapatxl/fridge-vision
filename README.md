@@ -1,5 +1,5 @@
 ## Fridge Vision
-An AI-Powered food detector! [Live Site](https://fridge-vision-x.vercel.app)
+An AI-powered food detector that identifies ingredients and estimates quantities from uploaded photos! [Live Site](https://fridge-vision-x.vercel.app)
 
 ## Demo
 [![Demo Video](https://img.youtube.com/vi/78NxnliU7IY/0.jpg)](https://youtu.be/78NxnliU7IY)
